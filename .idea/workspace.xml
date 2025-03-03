@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db310a54-ed3a-4ffc-9950-58bbc4a13928" name="Changes" comment="" />
+    <list default="true" id="db310a54-ed3a-4ffc-9950-58bbc4a13928" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,6 +42,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programation\Projects\teams-monstger" />
+      <recent name="D:\Programation\Projects\teams-monstger\.idea" />
       <recent name="D:\Programation\Projects\teams-monstger\Backend" />
       <recent name="D:\Programation\teams-monstger" />
     </key>
@@ -63,7 +68,7 @@
       <workItem from="1741031735774" duration="18000" />
       <workItem from="1741031764066" duration="23000" />
       <workItem from="1741032051882" duration="29000" />
-      <workItem from="1741032198487" duration="2618000" />
+      <workItem from="1741032198487" duration="3452000" />
     </task>
     <servers />
   </component>
