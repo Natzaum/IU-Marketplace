@@ -25,5 +25,12 @@
     "@types/node": "^22.13.9",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "pg": "^8.13.3",
+    "typeorm": "^0.3.21"
   }
 }
