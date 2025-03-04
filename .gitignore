@@ -1,6 +1,5 @@
 Backend/node_modules
 Backend/dist
-
 .idea
-
 Backend/.env
+package-lock.json
