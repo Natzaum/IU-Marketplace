@@ -1,18 +1,21 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import "reflect-metadata";
 import { AppDataSource } from "./config/database";
+import userRoutes from "./routes/userRoutes";
 
 dotenv.config();
 
 const app = express();
-
 app.use(express.json());
 app.use(cors());
 
 app.get('/', (req: express.Request, res: express.Response) => {
     res.send("Express server is running");
-    })
+});
+
+app.use("/api/users", userRoutes);
 
 AppDataSource.initialize()
     .then(() => {
@@ -23,4 +26,4 @@ AppDataSource.initialize()
             console.log(`Server started on port: ${PORT}`);
         });
     })
-    .catch((error) => console.log("Error occured: ", error));
+    .catch((error) => console.log("Error occurred: ", error));
