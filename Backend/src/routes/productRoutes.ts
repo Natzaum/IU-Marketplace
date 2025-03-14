@@ -11,4 +11,8 @@ router.put("/:id", async (req: Request, res: Response) => {
     await ProductController.editProduct(req, res);
 })
 
+router.delete("/:id", async (req: Request, res: Response) => {
+    await ProductController.deleteProduct(req, res);
+})
+
 export default router;
