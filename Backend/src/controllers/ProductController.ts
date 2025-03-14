@@ -54,4 +54,28 @@ export class ProductController {
             return res.status(500).json({ message: "Something went wrong" });
         }
     }
+
+    // ------------- Delete --------------- //
+
+    public static async deleteProduct(req: Request, res: Response): Promise<Response> {
+        try{
+            const { id } = req.params;
+
+            const productRepository = AppDataSource.getRepository(Product);
+
+            const product = await productRepository.findOne({ where: { id: Number(id) } });
+
+            if(!product) {
+                return res.status(404).json({ message: "Product not found" });
+            }
+
+            await productRepository.remove(product);
+
+            return res.status(201).json({ message: "Product deleted" });
+
+        } catch (e) {
+            console.log(e);
+            return res.status(500).json({ message: "Something went wrong" });
+        }
+    }
 }
