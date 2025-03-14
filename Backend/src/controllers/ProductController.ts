@@ -20,6 +20,7 @@ export class ProductController {
         } catch (error) {
             console.error(error);
             return res.status(500).json({ message: "Something went wrong" });
+
         }
     }
 
@@ -36,6 +37,7 @@ export class ProductController {
 
             if(!product) {
                 return res.status(404).json({ message: "Product not found" });
+
             }
 
             if (name) product.name = name;
@@ -52,6 +54,7 @@ export class ProductController {
         } catch (e) {
             console.log(e);
             return res.status(500).json({ message: "Something went wrong" });
+
         }
     }
 
@@ -67,8 +70,8 @@ export class ProductController {
 
             if(!product) {
                 return res.status(404).json({ message: "Product not found" });
-            }
 
+            }
             await productRepository.remove(product);
 
             return res.status(201).json({ message: "Product deleted" });
@@ -76,6 +79,50 @@ export class ProductController {
         } catch (e) {
             console.log(e);
             return res.status(500).json({ message: "Something went wrong" });
+
+        }
+    }
+
+    // ------------- Get all --------------- //
+
+    public static async getAllProducts(req: Request, res: Response): Promise<Response> {
+        try {
+            const productRepository = AppDataSource.getRepository(Product);
+
+            const products = await productRepository.find();
+
+            if (products && products.length <= 0) {
+                return res.status(404).json({message: "No products found"});
+
+            }
+
+            return res.status(200).json({products});
+
+        } catch (e) {
+            console.log(e);
+            return res.status(500).json({ message: "Something went wrong" });
+        }
+    }
+
+    // ------------- Get id --------------- //
+
+    public static async getProductById(req: Request, res: Response): Promise<Response> {
+        try{
+            const { id } = req.params;
+            const productRepository = AppDataSource.getRepository(Product);
+
+            const product = await productRepository.findOne({ where: { id: Number(id) } });
+
+            if(!product) {
+                return res.status(404).json({message: "Product not found"});
+            }
+
+            return res.status(200).json({product});
+
+        }catch (e) {
+            console.log(e);
+            return res.status(500).json({message: "Something went wrong"});
+
         }
     }
 }
