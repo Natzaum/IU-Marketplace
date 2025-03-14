@@ -15,4 +15,12 @@ router.delete("/:id", async (req: Request, res: Response) => {
     await ProductController.deleteProduct(req, res);
 })
 
+router.get("/all", async (req: Request, res: Response) => {
+    await ProductController.getAllProducts(req, res);
+});
+
+router.get("/:id", async (req: Request, res: Response) => {
+    await ProductController.getProductById(req, res);
+})
+
 export default router;
