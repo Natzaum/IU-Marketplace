@@ -25,8 +25,7 @@ export class UserController {
             await userRepository.save(newUser);
 
             return res.status(201).json({ message: "User created successfully", user: newUser });
-        } catch (error) {
-            console.error(error);
+        } catch (e) {
             return res.status(500).json({ message: "Something went wrong" });
         }
     }
@@ -56,8 +55,7 @@ export class UserController {
 
             return res.status(200).json({ message: "Login sucessful", token });
 
-        } catch (error){
-            console.error(error);
+        } catch (e){
             return res.status(500).json({ message: "Something went wrong" });
         }
     }

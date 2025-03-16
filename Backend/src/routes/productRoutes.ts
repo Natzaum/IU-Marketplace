@@ -1,5 +1,6 @@
 import { Router, Request, Response} from "express";
 import { ProductController } from "../controllers/ProductController";
+import { findProductMiddleware } from "../middlewares/productMiddleware";
 
 const router = Router();
 
@@ -7,11 +8,11 @@ router.post("/register", async (req: Request, res: Response) => {
     await ProductController.registerProduct(req, res);
 })
 
-router.put("/:id", async (req: Request, res: Response) => {
+router.put("/:id", findProductMiddleware, async (req, res) => {
     await ProductController.editProduct(req, res);
 })
 
-router.delete("/:id", async (req: Request, res: Response) => {
+router.delete("/:id", findProductMiddleware, async (req: Request, res: Response) => {
     await ProductController.deleteProduct(req, res);
 })
 

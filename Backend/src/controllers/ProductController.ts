@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { AppDataSource} from "../config/database";
 import { Product } from "../models/Product";
+import { findProductMiddleware } from "../middlewares/productMiddleware";
 
 export class ProductController {
 
@@ -17,8 +18,7 @@ export class ProductController {
 
             return res.status(201).json({ message: "Product created successfully", product: newProduct });
 
-        } catch (error) {
-            console.error(error);
+        } catch (e) {
             return res.status(500).json({ message: "Something went wrong" });
 
         }
@@ -28,17 +28,10 @@ export class ProductController {
 
     public static async editProduct(req: Request, res: Response): Promise<Response> {
         try {
-            const { id } = req.params;
+
+            const product = (req as any).product as Product;
+
             const { name, description, price, imageUrl, category, available } = req.body;
-
-            const productRepository = AppDataSource.getRepository(Product);
-
-            const product = await productRepository.findOne({ where: { id: Number(id) } });
-
-            if(!product) {
-                return res.status(404).json({ message: "Product not found" });
-
-            }
 
             if (name) product.name = name;
             if (description) product.description = description;
@@ -47,12 +40,11 @@ export class ProductController {
             if (category) product.category = category;
             if (available !== undefined) product.available = available;
 
-            await productRepository.save(product);
+            await AppDataSource.getRepository(Product).save(product);
 
             return res.status(201).json({ message: "Product edited successfully", product});
 
         } catch (e) {
-            console.log(e);
             return res.status(500).json({ message: "Something went wrong" });
 
         }
@@ -62,22 +54,13 @@ export class ProductController {
 
     public static async deleteProduct(req: Request, res: Response): Promise<Response> {
         try{
-            const { id } = req.params;
+            const product = (req as any).product as Product;
 
-            const productRepository = AppDataSource.getRepository(Product);
-
-            const product = await productRepository.findOne({ where: { id: Number(id) } });
-
-            if(!product) {
-                return res.status(404).json({ message: "Product not found" });
-
-            }
-            await productRepository.remove(product);
+            await AppDataSource.getRepository(Product).remove(product);
 
             return res.status(201).json({ message: "Product deleted" });
 
         } catch (e) {
-            console.log(e);
             return res.status(500).json({ message: "Something went wrong" });
 
         }
@@ -99,8 +82,8 @@ export class ProductController {
             return res.status(200).json({products});
 
         } catch (e) {
-            console.log(e);
             return res.status(500).json({ message: "Something went wrong" });
+
         }
     }
 
@@ -120,7 +103,6 @@ export class ProductController {
             return res.status(200).json({product});
 
         }catch (e) {
-            console.log(e);
             return res.status(500).json({message: "Something went wrong"});
 
         }
