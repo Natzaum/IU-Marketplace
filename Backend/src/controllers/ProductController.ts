@@ -10,10 +10,9 @@ export class ProductController {
     public static async registerProduct(req: Request, res: Response): Promise<Response> {
         try {
             const { name, description, price, imageUrl, category, available } = req.body;
-
             const productRepository = AppDataSource.getRepository(Product);
-
             const newProduct = productRepository.create({name, description, price, imageUrl, category, available});
+
             await productRepository.save(newProduct);
 
             return res.status(201).json({ message: "Product created successfully", product: newProduct });
@@ -28,9 +27,7 @@ export class ProductController {
 
     public static async editProduct(req: Request, res: Response): Promise<Response> {
         try {
-
             const product = (req as any).product as Product;
-
             const { name, description, price, imageUrl, category, available } = req.body;
 
             if (name) product.name = name;
@@ -71,14 +68,11 @@ export class ProductController {
     public static async getAllProducts(req: Request, res: Response): Promise<Response> {
         try {
             const productRepository = AppDataSource.getRepository(Product);
-
             const products = await productRepository.find();
 
-            if (products && products.length <= 0) {
-                return res.status(404).json({message: "No products found"});
-
+            if(products.length <= 0){
+                return res.status(404).json({ message: "No product found" });
             }
-
             return res.status(200).json({products});
 
         } catch (e) {
@@ -91,16 +85,9 @@ export class ProductController {
 
     public static async getProductById(req: Request, res: Response): Promise<Response> {
         try{
-            const { id } = req.params;
-            const productRepository = AppDataSource.getRepository(Product);
+            const product = (req as any).product as Product;
 
-            const product = await productRepository.findOne({ where: { id: Number(id) } });
-
-            if(!product) {
-                return res.status(404).json({message: "Product not found"});
-            }
-
-            return res.status(200).json({product});
+            return res.status(200).json({ product });
 
         }catch (e) {
             return res.status(500).json({message: "Something went wrong"});
