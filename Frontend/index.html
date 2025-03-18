@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IU Marketplace</title>
+</head>
+<body>
+<h1>Bem vindo ao IU!</h1>
+
+<p>Aqui você pode comprar e vender itens usados</p>
+
+<br>
+
+<form action="http://localhost:3000/api/products/register" method="POST">
+    <label for="name">Nome do produto:</label><br>
+    <input type="text" id="name" name="name" required>
+
+    <br><br>
+
+    <label for="price">preço:</label><br>
+    <input type="text" id="price" name="price" required>
+
+    <br><br>
+
+    <label for="imageUrl">Imagem do produto:</label><br>
+    <input type="text" id="imageUrl" name="imageUrl" required>
+
+    <br><br>
+
+    <label for="category">Categoria:</label><br>
+    <input type="text" id="category" name="category" required>
+
+    <br><br>
+
+    <label for="description">Descrição:</label><br>
+    <textarea id="description" name="description" rows="5" cols="30"></textarea>
+
+    <br><br>
+
+    <input type="submit" value="Cadastrar produto">
+</form>
+
+</body>
+</html>
