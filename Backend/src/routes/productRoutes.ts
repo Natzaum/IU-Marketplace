@@ -20,7 +20,7 @@ router.get("/all", async (req: Request, res: Response) => {
     await ProductController.getAllProducts(req, res);
 });
 
-router.get("/:id", async (req: Request, res: Response) => {
+router.get("/:id", findProductMiddleware, async (req: Request, res: Response) => {
     await ProductController.getProductById(req, res);
 })
 
