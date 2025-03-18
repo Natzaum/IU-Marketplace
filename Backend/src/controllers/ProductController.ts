@@ -9,7 +9,7 @@ export class ProductController {
 
     public static async registerProduct(req: Request, res: Response): Promise<Response> {
         try {
-            const { name, description, price, imageUrl, category, available } = req.body;
+            const { name, description, price, imageUrl, category, available = true } = req.body;
             const productRepository = AppDataSource.getRepository(Product);
             const newProduct = productRepository.create({name, description, price, imageUrl, category, available});
 
