@@ -13,6 +13,10 @@ export class ProductController {
             const productRepository = AppDataSource.getRepository(Product);
             const newProduct = productRepository.create({name, description, price, imageUrl, category, available});
 
+            if(!name || !description || !price || !category || imageUrl) {
+                return res.status(400).json({ message: "Please provide a valid product" });
+            }
+
             await productRepository.save(newProduct);
 
             return res.status(201).json({ message: "Product created successfully", product: newProduct });
