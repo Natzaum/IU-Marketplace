@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>IU Marketplace</title>
-</head>
+    <link rel="stylesheet" href="style.css">
 <body>
 <h1>Bem vindo ao IU!</h1>
 
@@ -17,7 +17,7 @@
 
     <br><br>
 
-    <label for="price">preço:</label><br>
+    <label for="price">Preço:</label><br>
     <input type="text" id="price" name="price" required>
 
     <br><br>
@@ -38,6 +38,13 @@
     <br><br>
 
     <input type="submit" value="Cadastrar produto">
+</form>
+
+<form action="http://localhost:3000/api/products/all">
+
+    <br>
+
+    <input type="submit" value="Gerar produtos">
 </form>
 
 </body>
