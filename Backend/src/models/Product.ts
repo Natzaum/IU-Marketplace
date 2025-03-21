@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Cart } from "./Cart";
 
 @Entity()
 export class Product {
@@ -22,4 +23,7 @@ export class Product {
 
     @Column({ default: true })
     available!: boolean;
+
+    @OneToMany(() => Cart, (cart) => cart.product)
+    cart!: Cart[];
 }
