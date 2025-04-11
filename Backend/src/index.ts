@@ -5,6 +5,7 @@ import "reflect-metadata";
 import { AppDataSource } from "./config/database";
 import userRoutes from "./routes/userRoutes";
 import productRoutes from "./routes/productRoutes";
+import CartRoutes from "./routes/CartRoutes";
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.get('/', (req: express.Request, res: express.Response) => {
 
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/cart", CartRoutes);
 
 AppDataSource.initialize()
     .then(() => {

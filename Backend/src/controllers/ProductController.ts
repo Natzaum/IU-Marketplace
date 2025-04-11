@@ -13,7 +13,7 @@ export class ProductController {
             const productRepository = AppDataSource.getRepository(Product);
             const newProduct = productRepository.create({name, description, price, imageUrl, category, available});
 
-            if(!name || !description || !price || !category || imageUrl) {
+            if(!name || !description || !price || !category || !imageUrl) {
                 return res.status(400).json({ message: "Please provide a valid product" });
             }
 
