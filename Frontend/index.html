@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>IU Marketplace</title>
     <link rel="stylesheet" href="style.css">
+
+    <script src="Backend/src/forms/ProductForm.ts" defer></script>
 <body>
 <h1>Bem vindo ao IU!</h1>
 
@@ -11,7 +13,7 @@
 
 <br>
 
-<form action="http://localhost:3000/api/products/register" method="POST">
+<form id="productForm">
     <label for="name">Nome do produto:</label><br>
     <input type="text" id="name" name="name" required>
 
