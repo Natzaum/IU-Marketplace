@@ -9,27 +9,33 @@ export class CartController {
     // ------------- Add to cart --------------- //
     public static async addToCart(req: Request, res: Response): Promise <Response>{
         try{
-            const { userId, productId, quantity } = req.body;
+            const { userId, productId} = req.body;
+            const quantity = Number(req.body.quantity);
 
             const userRepository = AppDataSource.getRepository(User);
             const productRepository = AppDataSource.getRepository(Product);
             const cartRepository = AppDataSource.getRepository(Cart);
 
             const user = await userRepository.findOne({ where: { id: userId } });
-            if (!user) return res.status(404).json({ message: "User not found" });
-
             const product = await productRepository.findOne({ where: { id: productId } });
-            if (!product) return res.status(404).json({ message: "Product not found" });
+
+            if (!user || !product) {
+                return res.status(404).json({ message: "User or product not found." });
+            }
 
             let cartItem = await cartRepository.findOne({
-                where: { user: { id: userId }, product: { id: productId } }
+                where: { user: { id: userId }, product: { id: productId } },
+                relations: ["user", "product"],
             });
 
             if (cartItem) {
                 cartItem.quantity += quantity;
             } else {
-                cartItem = cartRepository.create({user, product, quantity});
-            }
+                cartItem = cartRepository.create({
+                    user,
+                    product,
+                    quantity});
+                }
 
             await cartRepository.save(cartItem);
             return res.status(201).json({ message: "Product added to cart", cartItem });
@@ -54,6 +60,32 @@ export class CartController {
         } catch(e){
             console.log(e);
             return res.status(500).json({ message: "Something went wrong"})
+        }
+    }
+
+    // ------------- Get by id --------------- //
+
+    static async getUserCart(req: Request, res: Response): Promise<Response> {
+        try {
+            const userId = parseInt(req.params.userId);
+
+            const cartRepository = AppDataSource.getRepository(Cart);
+
+            const cartItems = await cartRepository.find({
+                where: { user: { id: userId } },
+                relations: ["product"],
+            });
+
+            return res.status(200).json({
+                userId,
+                items: cartItems.map(item => ({
+                    product: item.product,
+                    quantity: item.quantity
+                }))
+            });
+
+        } catch (err) {
+            return res.status(500).json({ message: "Something went wrong." });
         }
     }
 
