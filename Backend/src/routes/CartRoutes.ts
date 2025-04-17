@@ -11,6 +11,10 @@ router.get("/all", async (req: Request, res: Response) => {
     await CartController.getAllFromCart(req, res);
 })
 
+router.get("/user/:userId", async (req: Request, res: Response) => {
+    await CartController.getUserCart(req, res);
+})
+
 router.put("/:id", async (req: Request, res: Response) => {
     await CartController.editCart(req, res);
 })
