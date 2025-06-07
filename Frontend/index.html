@@ -1,53 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>IU Marketplace</title>
-    <link rel="stylesheet" href="style.css">
-
-    <script src="Backend/src/forms/ProductForm.ts" defer></script>
-<body>
-<h1>Bem vindo ao IU!</h1>
-
-<p>Aqui você pode comprar e vender itens usados</p>
-
-<br>
-
-<form id="productForm">
-    <label for="name">Nome do produto:</label><br>
-    <input type="text" id="name" name="name" required>
-
-    <br><br>
-
-    <label for="price">Preço:</label><br>
-    <input type="text" id="price" name="price" required>
-
-    <br><br>
-
-    <label for="imageUrl">Imagem do produto:</label><br>
-    <input type="text" id="imageUrl" name="imageUrl" required>
-
-    <br><br>
-
-    <label for="category">Categoria:</label><br>
-    <input type="text" id="category" name="category" required>
-
-    <br><br>
-
-    <label for="description">Descrição:</label><br>
-    <textarea id="description" name="description" rows="5" cols="30"></textarea>
-
-    <br><br>
-
-    <input type="submit" value="Cadastrar produto">
-</form>
-
-<form action="http://localhost:3000/api/products/all">
-
-    <br>
-
-    <input type="submit" value="Gerar produtos">
-</form>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
