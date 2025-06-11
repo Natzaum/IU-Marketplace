@@ -113,4 +113,27 @@ export class CartController {
             return res.status(500).json({ message: "Something went wrong" });
         }
     }
+
+    // ------------ Delete --------------- //
+    public static async deleteFromCart(req: Request, res: Response): Promise<Response> {
+        try {
+            const { productId, userId } = req.body;
+
+            const cartRepository = AppDataSource.getRepository(Cart);
+
+            const cartItem = await cartRepository.findOne({
+                where: { user: { id: userId }, product: { id: productId } },
+                relations: ["user", "product"]
+            });
+
+            if (!cartItem) return res.status(404).json({ message: "Cart item not found" });
+
+            await cartRepository.remove(cartItem);
+
+            return res.status(200).json({ message: "Cart item deleted" });
+        } catch (e) {
+            console.log(e);
+            return res.status(500).json({ message: "Something went wrong" });
+        }
+    }
 }

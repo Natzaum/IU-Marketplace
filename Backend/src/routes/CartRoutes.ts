@@ -19,4 +19,8 @@ router.put("/:id", async (req: Request, res: Response) => {
     await CartController.editCart(req, res);
 })
 
+router.delete("/:id", async (req: Request, res: Response) => {
+    await CartController.deleteFromCart(req, res);
+})
+
 export default router;
