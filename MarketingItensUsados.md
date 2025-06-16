@@ -17,7 +17,7 @@ O objetivo é que os usuários possam se cadastrar no sistema, comprar e vender 
 ## Tecnologias Pretendidas
 
 - **Backend:** Node.js com TypeScript
-- **Frontend:** HTML e CSS
+- **Frontend:** HTML, CSS e React
 - **Banco de Dados:** PostgreSQL
 - **Ferramentas:** Docker
 
