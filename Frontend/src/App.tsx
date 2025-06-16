@@ -7,6 +7,7 @@ import MyProducts from './pages/MyProducts';
 import Thanks from './pages/Thanks';
 import ForgotPassword from './pages/ForgotPassword';
 import CreateProduct from './pages/CreateProduct';
+import Perfil from './pages/Perfil';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/obrigado" element={<Thanks />} />
         <Route path="/esqueciasenha" element={<ForgotPassword />} />
         <Route path="/criarproduto" element={<CreateProduct />} />
+        <Route path="/perfil" element={<Perfil />} />
       </Routes>
     </BrowserRouter>
   );
