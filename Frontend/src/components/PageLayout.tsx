@@ -43,7 +43,7 @@ export default function PageLayout({ children }: Props) {
       <main className="home-content">{children}</main>
 
       <footer>
-        <p>© 2023 IU Marketplace. Todos os direitos reservados.</p>
+        <p>© 2025 IU Marketplace. Todos os direitos reservados.</p>
         <p>Contato: 103574@aluno.uricer.edu.br</p>
       </footer>
     </div>

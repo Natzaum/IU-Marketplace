@@ -8,6 +8,7 @@ import Thanks from './pages/Thanks';
 import ForgotPassword from './pages/ForgotPassword';
 import CreateProduct from './pages/CreateProduct';
 import Perfil from './pages/Perfil';
+import Product from './pages/Product';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/esqueciasenha" element={<ForgotPassword />} />
         <Route path="/criarproduto" element={<CreateProduct />} />
         <Route path="/perfil" element={<Perfil />} />
+        <Route path="/produto/:id" element={<Product />} />
       </Routes>
     </BrowserRouter>
   );

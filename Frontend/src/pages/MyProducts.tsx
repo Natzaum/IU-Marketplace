@@ -1,6 +1,7 @@
 import "../styles/home.css";
 import "../styles/myproducts.css";
 import PageLayout from "../components/PageLayout";
+import trashIcon from "../assets/trash-icon.png";
 
 export default function meusprodutos() {
   return (
@@ -33,16 +34,25 @@ export default function meusprodutos() {
               <h3>Produto 1</h3>
               <p>Descrição do produto 1.</p>
               <span>R$ 100,00</span>
+              <button>
+                <img className="trash-icon" src={trashIcon} alt="Remover" />
+              </button>
             </div>
             <div className="product-item">
               <h3>Produto 2</h3>
               <p>Descrição do produto 2.</p>
               <span>R$ 200,00</span>
+              <button>
+                <img className="trash-icon" src={trashIcon} alt="Remover" />
+              </button>
             </div>
             <div className="product-item">
               <h3>Produto 3</h3>
               <p>Descrição do produto 3.</p>
               <span>R$ 300,00</span>
+              <button>
+                <img className="trash-icon" src={trashIcon} alt="Remover" />
+              </button>
             </div>
           </div>
           <div className="create-product">

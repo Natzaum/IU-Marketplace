@@ -1,0 +1,27 @@
+.product-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    width: 400px;
+    height: 400px;
+    max-width: 400px;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: azure;
+    margin-bottom: 20px;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
