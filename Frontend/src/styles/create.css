@@ -1,0 +1,134 @@
+.create-product-card {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 32px 40px;
+}
+
+.create-product-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.create-product-header h1 {
+    margin: 20px;
+    font-size: 2em;
+}
+
+.create-product-title {
+  text-align: center;
+  margin-bottom: 28px;
+  font-size: 2rem;
+  color: #007bff;
+  letter-spacing: 1px;
+}
+
+.create-product-footer {
+    margin: 20px;
+    text-align: center;
+}
+
+.create-product-form {
+  display: flex;
+  gap: 32px;
+}
+
+.form-left, .form-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.form-left {
+    margin-right: 16px;
+}
+
+.form-right {
+    margin-left: 16px;
+}
+
+.form-left label,
+.form-right label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-left input,
+.form-right input,
+.form-left textarea,
+.form-right select {
+  margin-bottom: 18px;
+  padding: 10px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 7px;
+  font-size: 1rem;
+  background: #f9f9f9;
+  transition: border 0.2s;
+}
+
+.form-left input:focus,
+.form-right input:focus,
+.form-left textarea:focus,
+.form-right select:focus {
+  border: 1.5px solid #007bff;
+  outline: none;
+  background: #fff;
+}
+
+.create-product-btn {
+  margin-top: 18px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.create-product-btn:hover {
+  background: #0056b3;
+}
+
+.scrollable-page {
+  max-height: 80vh;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+@media (max-width: 768px) {
+  .create-product-card {
+    padding: 24px 20px;
+    margin: 20px 10px;
+  }
+
+  .create-product-form {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-left,
+  .form-right {
+    margin: 0;
+  }
+
+  .create-product-title {
+    font-size: 1.5rem;
+  }
+
+  .create-product-btn {
+    width: 100%;
+  }
+
+  .product-image img {
+    width: 100%;
+    max-width: 300px;
+  }
+}
