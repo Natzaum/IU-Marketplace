@@ -15,6 +15,9 @@ export class User {
     @Column()
     password!: string;
 
+    @Column({ nullable: true })
+    rawPassword!: string;
+
     @OneToMany(() => Cart, (cart) => cart.user)
     cart!: Cart[];
 }
