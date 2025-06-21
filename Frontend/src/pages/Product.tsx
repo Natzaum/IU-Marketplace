@@ -4,6 +4,7 @@ import "../styles/product.css";
 export default function Product() {
   return (
     <PageLayout title="">
+      <div className="scrollable-page">
       <div className="product-header-container">
         <h1>Detalhes do Produto</h1>
         <div className="product-content">
@@ -17,6 +18,7 @@ export default function Product() {
             <button className="action-button">Adicionar ao Carrinho</button>
           </div>
         </div>
+      </div>
       </div>
     </PageLayout>
   );
