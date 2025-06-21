@@ -9,21 +9,53 @@ import ForgotPassword from './pages/ForgotPassword';
 import CreateProduct from './pages/CreateProduct';
 import Perfil from './pages/Perfil';
 import Product from './pages/Product';
+import PrivateRoute from './routes/PrivateRoutes';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Públicas */}
         <Route path="/registrar" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/meusprodutos" element={<MyProducts />} />
-        <Route path="/carrinho" element={<Cart />} />
         <Route path="/obrigado" element={<Thanks />} />
         <Route path="/esqueciasenha" element={<ForgotPassword />} />
-        <Route path="/criarproduto" element={<CreateProduct />} />
-        <Route path="/perfil" element={<Perfil />} />
         <Route path="/produto/:id" element={<Product />} />
+
+        {/* Privadas */}
+        <Route
+          path="/meusprodutos"
+          element={
+            <PrivateRoute>
+              <MyProducts />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/carrinho"
+          element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/criarproduto"
+          element={
+            <PrivateRoute>
+              <CreateProduct />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/perfil"
+          element={
+            <PrivateRoute>
+              <Perfil />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

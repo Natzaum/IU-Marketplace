@@ -6,6 +6,11 @@ interface Props {
   children: React.ReactNode;
 }
 
+const handleLogout = () => {
+  localStorage.removeItem("token");
+  window.location.href = "/login";
+};
+
 export default function PageLayout({ children }: Props) {
   return (
     <div className="home-page">
@@ -30,7 +35,7 @@ export default function PageLayout({ children }: Props) {
                   <a href="/carrinho">Carrinho</a>
                 </li>
                 <li>
-                  <a href="/login">
+                  <a onClick={handleLogout}>
                     <strong>Sair</strong>
                   </a>
                 </li>
