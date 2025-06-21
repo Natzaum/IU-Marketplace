@@ -26,6 +26,7 @@ export class UserController {
 
             return res.status(201).json({ message: "User created successfully", user: newUser });
         } catch (e) {
+            console.error("Erro no register:", e);
             return res.status(500).json({ message: "Something went wrong" });
         }
     }

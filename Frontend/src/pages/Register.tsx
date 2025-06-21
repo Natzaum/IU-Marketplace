@@ -3,7 +3,7 @@ import "../styles/register.css";
 
 export default function Register() {
   const [form, setForm] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -13,7 +13,7 @@ export default function Register() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (form.password !== form.confirmPassword) {
@@ -21,7 +21,31 @@ export default function Register() {
       return;
     }
 
-    console.log("Formulário enviado:", form);
+    try {
+      const response = await fetch("http://localhost:3000/api/users/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          password: form.password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message || "Erro ao registrar usuário");
+      } else {
+        alert("Usuário registrado com sucesso!");
+        window.location.href = "/login";
+      }
+    } catch (error) {
+      alert("Erro na requisição");
+      console.error(error);
+    }
   };
 
   return (
@@ -40,9 +64,9 @@ export default function Register() {
               <h3>Nome de usuário</h3>
               <input
                 type="text"
-                name="username"
+                name="name"
                 placeholder="Ex: Gabriel123"
-                value={form.username}
+                value={form.name}
                 onChange={handleChange}
                 required
               />
