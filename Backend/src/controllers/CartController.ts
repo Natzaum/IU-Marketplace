@@ -40,6 +40,7 @@ export class CartController {
             await cartRepository.save(cartItem);
             return res.status(201).json({ message: "Product added to cart", cartItem });
         } catch (e){
+            console.log(e);
             return res.status(500).json({ message: "Something went wrong"})
         }
     }
@@ -85,6 +86,7 @@ export class CartController {
             });
 
         } catch (err) {
+            console.error("Erro ao buscar produtos do usuário:", err);
             return res.status(500).json({ message: "Something went wrong." });
         }
     }
