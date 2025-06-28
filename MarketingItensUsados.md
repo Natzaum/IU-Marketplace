@@ -3,7 +3,6 @@
 ## Integrantes da Equipe
 
 - Natã Cezer Bordignon
-- João Pedro Strada
 - Gabriel Felipe Martins
 
 ## Descrição do Problema
@@ -17,14 +16,14 @@ O objetivo é que os usuários possam se cadastrar no sistema, comprar e vender 
 ## Tecnologias Pretendidas
 
 - **Backend:** Node.js com TypeScript
-- **Frontend:** HTML, CSS e React
+- **Frontend:** CSS e React
 - **Banco de Dados:** PostgreSQL
-- **Ferramentas:** Docker
+- **Ferramentas:** Docker, Insomnia
 
 ## Funcionalidades Principais
 
 - [ ]  Cadastro e autenticação de usuários (JWT)
-- [ ]  Gerenciamento de produtos (criar, editar, excluir, listar)
+- [ ]  Gerenciamento de produtos (criar, excluir, listar)
 - [ ]  Adicionar produtos ao carrinho
 - [ ]  Upload de imagens para os produtos
 - [ ]  Filtro e busca de produtos
@@ -33,7 +32,7 @@ O objetivo é que os usuários possam se cadastrar no sistema, comprar e vender 
 
 - **Funcionais:**
     - RF01: O sistema deve permitir o cadastro e login de usuários.
-    - RF02: O sistema deve permitir que usuários cadastrem e editem produtos.
+    - RF02: O sistema deve permitir que usuários cadastrem e deletem seus produtos.
     - RF03: Os usuários devem poder visualizar e comprar produtos.
 - **Não Funcionais:**
     - RNF01: O banco de dados deve suportar um grande volume de usuários.
