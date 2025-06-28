@@ -62,6 +62,7 @@ export class UserController {
 
       return res.status(200).json({ message: "Login sucessful", token });
     } catch (e) {
+      console.error("Erro no login:", e);
       return res.status(500).json({ message: "Something went wrong" });
     }
   }

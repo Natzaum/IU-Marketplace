@@ -20,6 +20,7 @@ export function authMiddleware(
     (req as any).user = decoded;
     next();
   } catch (error) {
+    console.error("Authentication error:", error);
     res.status(401).json({ message: "Invalid token" });
   }
 }

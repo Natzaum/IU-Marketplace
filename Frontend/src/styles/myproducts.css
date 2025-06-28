@@ -31,7 +31,7 @@
   cursor: pointer;
   transition: background 0.2s;
   margin: 8px 0;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 .action-button:hover {
@@ -47,4 +47,62 @@
   cursor: pointer;
   text-decoration: underline;
   margin-left: 12px;
+}
+.featured-products-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.scroll-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.featured-products {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  max-width: 100%;
+  padding: 8px 0;
+}
+
+.featured-products::-webkit-scrollbar {
+  display: none;
+}
+.featured-products {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.product-item {
+  flex-shrink: 0;
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.scroll-arrow {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 6px 12px;
+  margin-left: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.2s;
+}
+
+.scroll-arrow:hover {
+  background-color: #f2f2f2;
+}
+
+.create-product {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
 }
