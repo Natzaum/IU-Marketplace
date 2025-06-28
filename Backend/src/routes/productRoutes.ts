@@ -5,7 +5,7 @@ import { authMiddleware } from "../middlewares/authMiddleware";
 
 const router = Router();
 
-router.post("/register", async (req: Request, res: Response) => {
+router.post("/register", authMiddleware, async (req: Request, res: Response) => {
     await ProductController.registerProduct(req, res);
 })
 
@@ -21,7 +21,7 @@ router.get("/all", async (req: Request, res: Response) => {
     await ProductController.getAllProducts(req, res);
 });
 
-router.get("/mine", async (req: Request, res: Response) => {
+router.get("/mine", authMiddleware, async (req: Request, res: Response) => {
   await ProductController.getMyProducts(req, res);
 });
 
