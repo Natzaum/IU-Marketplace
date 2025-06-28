@@ -177,6 +177,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  color: inherit;
 
   width: 200px;
   margin: 10px;
@@ -184,6 +186,11 @@ body {
   background-color: #f8f8f8;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-item:hover {
+  cursor: pointer;
+  background-color: #f0f0f0;
 }
 
 .product-item h3,
@@ -233,6 +240,84 @@ body {
   color: #007bff;
 }
 
+.scroll-wrapper {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.scroll-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  flex: 1;
+  padding: 12px 0;
+}
+
+.scroll-track::-webkit-scrollbar {
+  display: none;
+}
+
+.product-item {
+  width: 200px;
+  height: 170px;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.product-item.placeholder {
+  visibility: hidden;
+}
+
+.scroll-arrow {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.2s;
+  z-index: 1;
+}
+
+.scroll-arrow:hover {
+  background-color: #f2f2f2;
+}
+
+.scroll-left {
+  margin-right: 8px;
+}
+
+.scroll-right {
+  margin-left: 8px;
+}
+
+.scroll-track.two-line {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  flex: 1;
+  padding: 12px 0;
+}
+
+.scroll-track.two-line::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-line {
+  display: flex;
+  flex-shrink: 0;
+  width: max-content;
+}
+
 footer {
   width: 100%;
   border-top: 1px solid #ccc;
@@ -246,7 +331,7 @@ footer {
 @media (max-width: 768px) {
   .home-page {
     width: 90%;
-    margin: 40px auto; 
+    margin: 40px auto;
     padding: 16px;
   }
 
