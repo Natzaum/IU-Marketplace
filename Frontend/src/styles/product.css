@@ -8,14 +8,12 @@
 .product-image {
     width: 100%;
     height: auto;
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
     max-width: 400px;
     max-height: 400px;
     object-fit: cover;
     border-radius: 8px;
-    background-color: azure;
-    margin-bottom: 20px;
 }
 
 .product-info {
