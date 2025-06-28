@@ -62,3 +62,31 @@
 .checkout-button:hover {
   background-color: #0056b3;
 }
+
+.scroll-wrapper {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.scroll-track.two-line {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  flex: 1;
+  padding: 12px 0;
+}
+
+.scroll-track.two-line::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-line {
+  display: flex;
+  gap: 16px;
+  flex-shrink: 0;
+  width: max-content;
+}

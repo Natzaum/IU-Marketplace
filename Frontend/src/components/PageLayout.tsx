@@ -1,4 +1,5 @@
-import React from "react";
+// dentro de PageLayout.tsx
+import React, { useEffect, useState } from "react";
 import profileIcon from "../assets/profile-icon-png-910.png";
 
 interface Props {
@@ -7,30 +8,49 @@ interface Props {
 }
 
 export default function PageLayout({ children }: Props) {
+  const [userName, setUserName] = useState<string>("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    fetch("http://localhost:3000/api/users/profile", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.user?.name) {
+          setUserName(data.user.name);
+        } else if (data.user?.email) {
+          setUserName(data.user.email.split("@")[0]);
+        }
+      })
+      .catch(() => setUserName("Usuário"));
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
+
   return (
     <div className="home-page">
       <div className="header-content">
         <h1>IU Marketplace</h1>
         <h3>
-          Natã{" "}
+          {userName}{" "}
           <div className="profile-icon">
             <img src={profileIcon} alt="Ícone" />
             <div className="hover-menu">
               <ul>
+                <li><a href="/perfil">Ver perfil</a></li>
+                <li><a href="/home">Página inicial</a></li>
+                <li><a href="/meusprodutos">Anunciar produto</a></li>
+                <li><a href="/carrinho">Carrinho</a></li>
                 <li>
-                  <a href="/perfil">Ver perfil</a>
-                </li>
-                <li>
-                  <a href="/home">Página inicial</a>
-                </li>
-                <li>
-                  <a href="/meusprodutos">Anunciar produto</a>
-                </li>
-                <li>
-                  <a href="/carrinho">Carrinho</a>
-                </li>
-                <li>
-                  <a href="/login">
+                  <a onClick={handleLogout}>
                     <strong>Sair</strong>
                   </a>
                 </li>

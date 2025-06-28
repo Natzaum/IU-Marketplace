@@ -11,9 +11,34 @@ export default function Login() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Tentativa de login:", form);
+
+    try {
+      const response = await fetch("http://localhost:3000/api/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: form.email,
+          password: form.password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message || "Erro ao fazer login");
+      } else {
+        alert("Login realizado com sucesso!");
+        localStorage.setItem("token", data.token);
+        window.location.href = "/home";
+      }
+    } catch (error) {
+      alert("Erro na requisição");
+      console.error(error);
+    }
   };
 
   return (
