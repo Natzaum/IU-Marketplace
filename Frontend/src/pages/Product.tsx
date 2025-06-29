@@ -66,20 +66,6 @@ export default function Product() {
   return (
     <PageLayout title="">
       <div className="scrollable-page">
-<<<<<<< HEAD
-      <div className="product-header-container">
-        <h1>Detalhes do Produto</h1>
-        <div className="product-content">
-          <div className="product-image">
-            <img/>
-          </div>
-          <div className="product-info">
-            <h2>Nome do Produto</h2>
-            <p>Descrição do produto...</p>
-            <p>Preço: R$ 100,00</p>
-            <button className="action-button">Adicionar ao Carrinho</button>
-          </div>
-=======
         <div className="product-header-container">
           <h1>Detalhes do Produto</h1>
 
@@ -101,9 +87,7 @@ export default function Product() {
           ) : (
             <p>Carregando produto...</p>
           )}
->>>>>>> abbcffdcc97d545a3f107e175abfe3ca5b6ede11
         </div>
-      </div>
       </div>
     </PageLayout>
   );
