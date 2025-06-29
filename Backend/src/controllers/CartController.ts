@@ -11,7 +11,9 @@ export class CartController {
     res: Response
   ): Promise<Response> {
     try {
-      const { userId, productId } = req.body;
+      const userId = (req as any).user.id;
+      const { productId } = req.body;
+
       const quantity = Number(req.body.quantity);
 
       const userRepository = AppDataSource.getRepository(User);
@@ -129,29 +131,26 @@ export class CartController {
   }
 
   // ------------ Delete --------------- //
-  public static async deleteFromCart(
-    req: Request,
-    res: Response
-  ): Promise<Response> {
-    try {
-      const { productId, userId } = req.body;
+public static async deleteFromCart(req: Request, res: Response): Promise<Response> {
+  try {
+    const cartId = parseInt(req.params.id);
 
-      const cartRepository = AppDataSource.getRepository(Cart);
+    const cartRepository = AppDataSource.getRepository(Cart);
 
-      const cartItem = await cartRepository.findOne({
-        where: { user: { id: userId }, product: { id: productId } },
-        relations: ["user", "product"],
-      });
+    const cartItem = await cartRepository.findOne({
+      where: { id: cartId },
+    });
 
-      if (!cartItem)
-        return res.status(404).json({ message: "Cart item not found" });
+    if (!cartItem)
+      return res.status(404).json({ message: "Cart item not found" });
 
-      await cartRepository.remove(cartItem);
+    await cartRepository.remove(cartItem);
 
-      return res.status(200).json({ message: "Cart item deleted" });
-    } catch (e) {
-      console.log(e);
-      return res.status(500).json({ message: "Something went wrong" });
-    }
+    return res.status(200).json({ message: "Cart item deleted" });
+  } catch (e) {
+    console.log(e);
+    return res.status(500).json({ message: "Something went wrong" });
   }
+}
+
 }
